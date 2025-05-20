@@ -1,52 +1,108 @@
 body {
-    background-color: #1a1a1a; /* Even darker background */
-    color: #ccc; /* Lighter grey text for a softer look */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font stack */
+    background-color: #111; /* Darker background */
+    color: #bbb; /* Faint light text */
+    font-family: 'Courier New', Courier, monospace; /* Monospaced font */
     margin: 0;
-    padding: 40px;
+    padding: 20px; /* Adjusted padding */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Center content vertically too */
+    justify-content: center;
     min-height: 100vh;
-    text-align: center; /* Center text within body */
+    text-align: left; /* Default text alignment to left for game text */
 }
 
-header h1 {
-    color: #e0e0e0; /* Slightly brighter for the main heading */
-    font-size: 3em;
-    margin-bottom: 0.5em;
-    text-shadow: 0 0 10px rgba(0,0,0,0.5); /* Subtle text shadow */
+#game-container {
+    width: 80%;
+    max-width: 900px;
+    border: 1px solid #444;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.7);
+    background-color: #1a1a1a; /* Slightly lighter than body for contrast */
 }
 
-main p {
+#ascii-art-display {
+    white-space: pre;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #888;
+    line-height: 1.2;
+    font-size: 0.9em; /* Slightly smaller for dense art */
+}
+
+#story-passage {
+    margin-bottom: 30px;
     font-size: 1.1em;
-    line-height: 1.6;
-    max-width: 600px; /* Constrain width for readability */
-    margin-bottom: 2em;
+    line-height: 1.7;
+    min-height: 100px; /* Prevents layout jumps */
+    color: #ccc; /* Brighter than default #bbb for readability */
 }
 
-main div { /* Container for icons */
-    margin-top: 2em;
+#story-passage p {
+    transition: opacity 0.5s ease-in-out;
+    margin: 0 0 1em 0; /* Spacing between paragraphs if multiple are used */
 }
 
-/* Styling Lucide Icons */
+#story-passage p:last-child {
+    margin-bottom: 0;
+}
+
+#story-passage p.fade-out {
+    opacity: 0;
+}
+
+#story-passage p.fade-in {
+    opacity: 1;
+}
+
+#choices-area {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Choices aligned to the left */
+}
+
+.choice-button {
+    background-color: transparent;
+    border: 1px solid #555;
+    color: #aaa;
+    padding: 10px 15px;
+    margin: 5px 0;
+    text-decoration: none;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    min-width: 200px; /* Ensure buttons have a decent minimum width */
+}
+
+.choice-button:hover {
+    background-color: #333;
+    color: #fff;
+    border-color: #777;
+}
+
+.choice-button i[data-lucide] {
+    margin-right: 8px;
+    width: 18px;
+    height: 18px;
+    stroke-width: 2;
+    color: inherit; /* Icon color inherits from button text color */
+}
+
+/* General Styling for Lucide Icons (if any are used outside buttons) */
 i[data-lucide] {
-    width: 48px; /* Larger icons */
-    height: 48px;
-    stroke-width: 1.5; /* Thinner strokes for a more delicate look */
-    color: #888; /* Muted icon color */
-    margin: 0 15px; /* Spacing between icons */
-    transition: color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    width: 24px; /* Default size */
+    height: 24px;
+    stroke-width: 1.5;
+    color: #999; /* General icon color */
+    margin: 0 5px; /* General margin */
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 i[data-lucide]:hover {
-    color: #00aaff; /* Bright color on hover for a moody contrast */
-    transform: scale(1.1); /* Slightly enlarge on hover */
-}
-
-footer {
-    margin-top: 3em;
-    font-size: 0.9em;
-    color: #666; /* Darker grey for footer text */
+    color: #0af; /* Highlight color for general icons */
+    transform: scale(1.1);
 }
